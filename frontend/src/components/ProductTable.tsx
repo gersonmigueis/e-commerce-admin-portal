@@ -1,5 +1,6 @@
-import { Product } from '../features/products/types';
+import { Product } from '../models/products/types';
 import { useMemo } from 'react';
+import styles from '../styles/products/ProductTable.module.css';
 
 interface ProductTableProps {
   products: Product[];
@@ -20,7 +21,7 @@ export function ProductTable({ products, onEdit, onArchive, onAdjustStock, searc
   }, [products, search]);
 
   return (
-    <div className="w-full">
+    <div className={styles.tableWrapper}>
       <div className="flex mb-4">
         <input
           type="text"
@@ -31,34 +32,34 @@ export function ProductTable({ products, onEdit, onArchive, onAdjustStock, searc
         />
       </div>
       <div className="overflow-x-auto">
-        <table className="min-w-full bg-white border rounded shadow">
-          <thead>
-            <tr className="bg-gray-100">
-              <th className="px-4 py-2">Name</th>
-              <th className="px-4 py-2">SKU</th>
-              <th className="px-4 py-2">Price</th>
-              <th className="px-4 py-2">Stock</th>
-              <th className="px-4 py-2">Category</th>
-              <th className="px-4 py-2">Variants</th>
-              <th className="px-4 py-2">Actions</th>
+        <table className={styles.customTable}>
+          <thead className={styles.customThead}>
+            <tr>
+              <th className={styles.customTh}>Name</th>
+              <th className={styles.customTh}>SKU</th>
+              <th className={styles.customTh}>Price</th>
+              <th className={styles.customTh}>Stock</th>
+              <th className={styles.customTh}>Category</th>
+              <th className={styles.customTh}>Variants</th>
+              <th className={styles.customTh}>Actions</th>
             </tr>
           </thead>
           <tbody>
             {filteredProducts.map(product => (
-              <tr key={product.id} className={product.deletedAt ? 'bg-gray-200' : ''}>
-                <td className="border px-4 py-2">{product.name}</td>
-                <td className="border px-4 py-2">{product.sku}</td>
-                <td className="border px-4 py-2">${(product.price ?? 0).toFixed(2)}</td>
-                <td className="border px-4 py-2">{product.stock}</td>
-                <td className="border px-4 py-2">{product.category}</td>
-                <td className="border px-4 py-2">
+              <tr key={product.id} className={product.deletedAt ? styles.customTrDark : styles.customTr}>
+                <td className={styles.customTd}>{product.name}</td>
+                <td className={styles.customTd}>{product.sku}</td>
+                <td className={styles.customTd}>${(product.price ?? 0).toFixed(2)}</td>
+                <td className={styles.customTd}>{product.stock}</td>
+                <td className={styles.customTd}>{product.category}</td>
+                <td className={styles.customTd}>
                   {product.variants.map(v => (
-                    <div key={v.id} className="text-xs">
+                    <div key={v.id} className={styles.variant}>
                       {v.name} ({v.sku}) - ${(v.price ?? 0).toFixed(2)} - Stock: {v.stock}
                     </div>
                   ))}
                 </td>
-                <td className="border px-4 py-2">
+                <td className={styles.customTd}>
                   <button className="mr-2 text-blue-600" onClick={() => onEdit(product)}>Edit</button>
                   <button className="mr-2 text-yellow-600" onClick={() => onAdjustStock(product)}>Stock</button>
                   <button className="text-red-600" onClick={() => onArchive(product)} disabled={!!product.deletedAt}>Archive</button>
