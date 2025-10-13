@@ -54,3 +54,11 @@ pids
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+
+# Prisma
+dev.db
+dev.db-journal
+migration_lock.toml
+.env
+.env.local
