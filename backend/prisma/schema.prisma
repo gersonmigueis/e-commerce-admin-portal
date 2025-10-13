@@ -9,15 +9,15 @@ datasource db {
 }
 
 model Product {
-		id           Int      @id @default(autoincrement())
-		name         String
-		category     String
-		description  String?
-		price        Float
-		isArchived   Boolean  @default(false)
-		variants     ProductVariant[]
-		createdAt    DateTime @default(now())
-		updatedAt    DateTime @updatedAt
+	id           Int      @id @default(autoincrement())
+	name         String
+	category     String
+	description  String?
+	price        Float
+	deletedAt    DateTime?
+	variants     ProductVariant[]
+	createdAt    DateTime @default(now())
+	updatedAt    DateTime @updatedAt
 }
 
 model ProductVariant {
@@ -26,7 +26,6 @@ model ProductVariant {
 	name       String
 	sku        String
 	stock      Int
-	isArchived Boolean @default(false)
 	product    Product @relation(fields: [productId], references: [id])
 	createdAt  DateTime @default(now())
 	updatedAt  DateTime @updatedAt
