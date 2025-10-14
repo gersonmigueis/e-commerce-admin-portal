@@ -1,3 +1,4 @@
+"use client";
 import { Product } from '../models/products/types';
 import { useMemo } from 'react';
 import styles from '../styles/products/ProductTable.module.css';
@@ -50,14 +51,14 @@ export function ProductTable({ products, onEdit, onArchive, onAdjustStock, searc
                 <td className={styles.customTd}>
                   {product.variants.map(v => (
                     <div key={v.id} className={styles.variant}>
-                      {v.name} ({v.sku}) - ${(v.price ?? 0).toFixed(2)} - Stock: {v.stock}
+                      {v.name} ({v.sku}) - Stock: {v.stock}
                     </div>
                   ))}
                 </td>
                 <td className={styles.customTd}>
-                  <button className="mr-2 text-blue-600" onClick={() => onEdit(product)}>Edit</button>
-                  <button className="mr-2 text-yellow-600" onClick={() => onAdjustStock(product)}>Stock</button>
-                  <button className="text-red-600" onClick={() => onArchive(product)} disabled={!!product.deletedAt}>Archive</button>
+                  <button className="mr-2 text-blue-600" onClick={() => { onEdit(product); }}>Edit</button>
+                  <button className="mr-2 text-yellow-600" onClick={() => { onAdjustStock(product); }}>Stock</button>
+                  <button className="text-red-600" onClick={() => { onArchive(product); }} disabled={!!product.deletedAt}>Archive</button>
                 </td>
               </tr>
             ))}

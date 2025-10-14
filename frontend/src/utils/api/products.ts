@@ -18,8 +18,8 @@ export const updateProduct = async (id: string, data: ProductUpdate): Promise<Pr
   return res.data;
 };
 
-export const adjustStock = async (id: string, data: StockAdjustment): Promise<Product> => {
-  const res = await axios.patch(`${API_URL}/products/${id}/stock`, data);
+export const adjustStock = async (variantId: string, data: StockAdjustment): Promise<Product> => {
+  const res = await axios.patch(`${API_URL}/products/variant/${variantId}/stock`, data);
   return res.data;
 };
 

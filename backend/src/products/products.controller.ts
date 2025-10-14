@@ -18,7 +18,7 @@ export class ProductsController {
     return this.productsService.createProduct(createProductDto);
   }
 
-  @Put(':id')
+  @Patch(':id')
   @UsePipes(new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true }))
   async updateProduct(@Param('id') id: string, @Body() updateDto: UpdateProductDto) {
     return this.productsService.updateProduct(Number(id), updateDto);
