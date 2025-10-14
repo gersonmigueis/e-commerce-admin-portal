@@ -2,16 +2,13 @@ export interface ProductVariant {
   id: string;
   name: string;
   sku: string;
-  price: number;
   stock: number;
 }
 
 export interface Product {
   id: string;
   name: string;
-  sku: string;
   price: number;
-  stock: number;
   category: string;
   variants: ProductVariant[];
   deletedAt?: string | null;
@@ -19,11 +16,13 @@ export interface Product {
 
 export interface ProductInput {
   name: string;
-  sku: string;
   price: number;
-  stock: number;
   category: string;
-  variants: Omit<ProductVariant, 'id'>[];
+  variants: {
+    name: string;
+    sku: string;
+    stock: number;
+  }[];
 }
 
 export interface ProductUpdate {

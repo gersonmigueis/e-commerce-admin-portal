@@ -21,12 +21,13 @@ export class ProductsService {
         data: {
           name: dto.name,
           category: dto.category,
+          description: dto.description,
           price: dto.price,
           variants: {
             create: dto.variants?.map(variant => ({
               name: variant.name,
-              sku: variant.sku,
-              stock: variant.stock,
+              sku: variant.sku,   
+              stock: variant.stock
             })) || [],
           },
         },

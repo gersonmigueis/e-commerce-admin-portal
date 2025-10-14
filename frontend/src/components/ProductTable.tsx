@@ -15,7 +15,6 @@ export function ProductTable({ products, onEdit, onArchive, onAdjustStock, searc
   const filteredProducts = useMemo(() => {
     return products.filter(p =>
       p.name.toLowerCase().includes(search.toLowerCase()) ||
-      p.sku.toLowerCase().includes(search.toLowerCase()) ||
       p.category.toLowerCase().includes(search.toLowerCase())
     );
   }, [products, search]);
@@ -36,9 +35,7 @@ export function ProductTable({ products, onEdit, onArchive, onAdjustStock, searc
           <thead className={styles.customThead}>
             <tr>
               <th className={styles.customTh}>Name</th>
-              <th className={styles.customTh}>SKU</th>
               <th className={styles.customTh}>Price</th>
-              <th className={styles.customTh}>Stock</th>
               <th className={styles.customTh}>Category</th>
               <th className={styles.customTh}>Variants</th>
               <th className={styles.customTh}>Actions</th>
@@ -48,9 +45,7 @@ export function ProductTable({ products, onEdit, onArchive, onAdjustStock, searc
             {filteredProducts.map(product => (
               <tr key={product.id} className={product.deletedAt ? styles.customTrDark : styles.customTr}>
                 <td className={styles.customTd}>{product.name}</td>
-                <td className={styles.customTd}>{product.sku}</td>
                 <td className={styles.customTd}>${(product.price ?? 0).toFixed(2)}</td>
-                <td className={styles.customTd}>{product.stock}</td>
                 <td className={styles.customTd}>{product.category}</td>
                 <td className={styles.customTd}>
                   {product.variants.map(v => (
