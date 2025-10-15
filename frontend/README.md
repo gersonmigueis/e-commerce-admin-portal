@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# E-Commerce Admin Portal
 
-## Getting Started
+## Backend (NestJS)
 
-First, run the development server:
+**Main dependencies:**
+- NestJS: Node.js framework for scalable server-side applications
+- Prisma: ORM for database management
+- SQLite: Default database (see `prisma/schema.prisma`)
+- Jest: Testing framework
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**Setup & Run:**
+1. Navigate to the backend folder:
+   ```bash
+   cd backend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Run database migrations:
+   ```bash
+   npx prisma migrate dev
+   ```
+4. Run the backend server (development):
+   ```bash
+   npm run start:dev
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Frontend (Next.js)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Main dependencies:**
+- Next.js: React framework for SSR and SSG
+- React: UI library
+- Tailwind CSS: Utility-first CSS framework
+- Axios: HTTP client for API requests
+- React Hook Form & Zod: Form validation
+- Radix UI: Accessible UI primitives
 
-## Learn More
+**Setup & Run:**
+1. Navigate to the frontend folder:
+   ```bash
+   cd frontend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Run the frontend server (development):
+   ```bash
+   npm run dev
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Access the frontend at [http://localhost:3000](http://localhost:3000)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+**Requirements:**
+- Node.js >= 18.x
+- npm >= 9.x
+- SQLite running locally (or update `prisma/schema.prisma` for your DB)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Important:**
+- Ensure backend is running before using the frontend for API features.
+- Environment variables may be required (see `.env.example` in each project).
+- For production, review security and performance settings in both projects.
