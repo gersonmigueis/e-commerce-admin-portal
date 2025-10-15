@@ -50,7 +50,6 @@ function AdjustStockModal({ product, onClose, onSubmit, loading, error }: {
         {error && <div className={styles.errorMsg}>{error}</div>}
 
         <div className={styles.buttonGroup}>
-          {/* <button onClick={onClose} className={styles.secondaryButton}>Cancel</button> */}
           <button 
             onClick={() => onSubmit(variantId, stock)} 
             className={styles.primaryButton} 

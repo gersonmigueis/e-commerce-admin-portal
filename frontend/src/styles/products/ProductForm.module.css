@@ -1,9 +1,8 @@
-/* Hide main page content when modal is open */
+
 .pageHidden {
   display: none !important;
 }
 
-/* Modal overlay with lighter solid color for better UX */
 .modalOverlay {
   position: fixed;
   inset: 0;

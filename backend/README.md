@@ -65,5 +65,4 @@ Access the frontend at [http://localhost:3000](http://localhost:3000)
 
 **Important:**
 - Ensure backend is running before using the frontend for API features.
-- Environment variables may be required (see `.env.example` in each project).
-- For production, review security and performance settings in both projects.
+
