@@ -1,0 +1,119 @@
+/* AdjustStockModal.module.css */
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(17, 24, 39, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  padding: 1rem;
+}
+
+.modalContent {
+  background: #ffffff;
+  border-radius: 0.75rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827; 
+  margin-bottom: 1.5rem;
+}
+
+.label {
+  display: block;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.formGroup {
+  margin-bottom: 1.25rem;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  padding: 0.625rem 0.75rem;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  color: #111827;
+  background-color: #ffffff; 
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.input:focus {
+  border-color: #4f46e5;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.selectWrapper {
+  position: relative;
+}
+.selectWrapper::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  width: 1rem;
+  height: 1rem;
+  margin-top: -0.5rem;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end; 
+  margin-top: 2rem;
+}
+
+.primaryButton, .secondaryButton {
+  border: none;
+  border-radius: 0.375rem;
+  padding: 0.625rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.primaryButton {
+  background-color: #22c55e;
+  color: #fff;
+}
+
+.primaryButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.secondaryButton {
+  background-color: #e5e7eb;
+  color: #374151; 
+}
+.secondaryButton:hover {
+  background-color: #d1d5db;
+}
+
+.errorMsg {
+  color: #dc2626;
+  font-size: 0.875rem;
+  margin-bottom: 1.5rem;
+}

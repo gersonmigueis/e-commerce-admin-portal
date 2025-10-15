@@ -65,4 +65,3 @@ Access the frontend at [http://localhost:3000](http://localhost:3000)
 
 **Important:**
 - Ensure backend is running before using the frontend for API features.
-

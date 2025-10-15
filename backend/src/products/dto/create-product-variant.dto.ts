@@ -1,6 +1,7 @@
-import { IsString, IsNumber, IsBoolean, IsOptional } from 'class-validator';
+import { IsString, IsNumber, IsObject } from 'class-validator';
 
 export class CreateProductVariantDto {
+
   @IsString()
   name: string;
 
@@ -10,7 +11,4 @@ export class CreateProductVariantDto {
   @IsNumber()
   stock: number;
 
-  @IsBoolean()
-  @IsOptional()
-  isArchived?: boolean;
 }

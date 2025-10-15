@@ -1,0 +1,99 @@
+.tableWrapper {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  padding: 1.5rem;
+}
+
+.tableWrapper input[type="text"] {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  padding: 0.625rem 0.75rem;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background: #fff;
+}
+.tableWrapper input[type="text"]:focus {
+  border-color: #4f46e5;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.customTable {
+  width: 100%;
+  text-align: left;
+  margin-top: 1.5rem;
+}
+
+.customThead {
+  background-color: #f9fafb;
+}
+
+.customTh {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #6b7280;
+  font-weight: 600;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.customTr {
+  border-bottom: 1px solid #e5e7eb;
+  transition: background-color 0.2s;
+}
+.customTr:last-child {
+  border-bottom: none;
+}
+.customTr:hover {
+  background-color: #f9fafb;
+}
+
+.customTrDark {
+  composes: customTr;
+  background-color: #f3f4f6;
+  opacity: 0.6;
+}
+
+.customTd {
+  padding: 1rem 1.5rem;
+  vertical-align: middle;
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+.variant {
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.25rem 0.625rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 9999px;
+  display: inline-block;
+  background-color: #eef2ff;
+  color: #4338ca;
+  border: 1px solid #c7d2fe;
+}
+
+.customTd button {
+  background: none;
+  border: none;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s;
+}
+.customTd button:hover {
+  background-color: #f3f4f6;
+}
+.customTd button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
