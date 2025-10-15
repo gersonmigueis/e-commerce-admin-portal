@@ -3,6 +3,7 @@ import { Product, ProductInput } from '../models/products/types';
 import { fetchProducts, updateProduct, adjustStock, archiveProduct } from '../utils/api/products';
 import { ProductTable } from '../components/ProductTable';
 import { ProductForm } from '../components/ProductForm';
+import styles from '../styles/products/ProductStockForm.module.css';
 
 function AdjustStockModal({ product, onClose, onSubmit, loading, error }: {
   product: Product;
@@ -14,21 +15,49 @@ function AdjustStockModal({ product, onClose, onSubmit, loading, error }: {
   const [variantId, setVariantId] = useState(product.variants[0]?.id || '');
   const [stock, setStock] = useState(0);
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg p-6 w-full max-w-md">
-        <h2 className="text-lg font-bold mb-4">Adjust Stock</h2>
-        <label className="block mb-2">Variant</label>
-        <select value={variantId} onChange={e => setVariantId(e.target.value)} className="border rounded px-3 py-2 w-full mb-4">
-          {product.variants.map(v => (
-            <option key={v.id} value={v.id}>{v.name} ({v.sku})</option>
-          ))}
-        </select>
-        <label className="block mb-2">New Stock</label>
-        <input type="number" value={stock} onChange={e => setStock(Number(e.target.value))} className="border rounded px-3 py-2 w-full mb-4" />
-        {error && <div className="text-red-600 mb-2">{error}</div>}
-        <div className="flex gap-2 justify-end">
-          <button onClick={onClose} className="px-4 py-2 rounded bg-gray-200">Cancel</button>
-          <button onClick={() => onSubmit(variantId, stock)} className="px-4 py-2 rounded bg-green-600 text-white" disabled={loading}>{loading ? 'Saving...' : 'Save'}</button>
+    <div className={styles.modalOverlay} onClick={onClose}>
+      <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+        <h2 className={styles.title}>Adjust Stock</h2>
+        
+        <div className={styles.formGroup}>
+          <label htmlFor="variant-select" className={styles.label}>Variant</label>
+          <div className={styles.selectWrapper}>
+            <select 
+              id="variant-select"
+              value={variantId} 
+              onChange={e => setVariantId(e.target.value)} 
+              className={styles.input}
+            >
+              {product.variants.map(v => (
+                <option key={v.id} value={v.id}>{v.name} ({v.sku})</option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        <div className={styles.formGroup}>
+          <label htmlFor="new-stock-input" className={styles.label}>New Stock</label>
+          <input 
+            id="new-stock-input"
+            type="number" 
+            value={stock} 
+            onChange={e => setStock(Number(e.target.value))} 
+            className={styles.input} 
+            placeholder="e.g., 50"
+          />
+        </div>
+
+        {error && <div className={styles.errorMsg}>{error}</div>}
+
+        <div className={styles.buttonGroup}>
+          {/* <button onClick={onClose} className={styles.secondaryButton}>Cancel</button> */}
+          <button 
+            onClick={() => onSubmit(variantId, stock)} 
+            className={styles.primaryButton} 
+            disabled={loading}
+          >
+            {loading ? 'Saving...' : 'Save'}
+          </button>
         </div>
       </div>
     </div>
@@ -92,7 +121,6 @@ export default function ProductsPage() {
     try {
       if (!adjustProduct) return;
       await adjustStock(adjustProduct.id, { variantId, stock });
-      // Refresh products after update
       const updated = await fetchProducts();
       setProducts(updated);
       setAdjustModalOpen(false);
@@ -118,8 +146,10 @@ export default function ProductsPage() {
     }
   };
 
+  const isModalOpen = editModalOpen || adjustModalOpen;
+
   return (
-    <div>
+    <div className={isModalOpen ? 'pageHidden' : ''}>
       <ProductTable
         products={filteredProducts}
         onEdit={handleEdit}

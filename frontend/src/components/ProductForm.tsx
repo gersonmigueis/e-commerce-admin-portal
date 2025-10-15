@@ -51,7 +51,7 @@ export function ProductForm({ initial, onSubmit, loading, error }: ProductFormPr
     <div className={styles.modalWrapper}>
       <div className={styles.modalContent}>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '2rem' }}>
+          <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '2rem', color: '#1f2937' }}>
             Edit Product
           </h2>
 

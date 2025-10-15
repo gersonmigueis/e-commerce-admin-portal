@@ -1,18 +1,23 @@
+/* Hide main page content when modal is open */
+.pageHidden {
+  display: none !important;
+}
+
+/* Modal overlay with lighter solid color for better UX */
 .modalOverlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  inset: 0;
+  background-color: rgba(17, 24, 39, 0.6);
+  backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 50;
   padding: 1rem;
 }
 
 .modalWrapper {
+  
   background: #fff;
   border-radius: 0.75rem;
   box-shadow: 0 4px 20px rgba(0,0,0,0.15);
@@ -20,6 +25,12 @@
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+   z-index: 1000;
+  padding: 1rem;
 }
 
 .modalContent {
@@ -41,6 +52,7 @@
   font-size: 0.95rem;
 }
 .input {
+  color: #1f2937;
   display: block;
   width: 100%;
   border: 1px solid #d1d5db;
@@ -68,6 +80,11 @@
   gap: 1rem;
   margin-top: 1rem;
   margin-bottom: 1.5rem;
+}
+
+.addVariantForm > div:nth-child(3),
+.addVariantForm > button {
+  grid-column: span 2;
 }
 
 .variantList {
